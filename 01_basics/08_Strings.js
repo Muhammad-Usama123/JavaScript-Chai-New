@@ -12,6 +12,7 @@
         // const gameName = new String ('Haris Khan') // when we declare string using normal syntax that string also invokes JavaScript object behind the scenes. but if we will write console.log(typeof gameName) it will show the type as object but it is a string object.
 
         // console.log(gameName[0]) // it will print H in console // accessing values of string object.
+        // console.log(gameName[gameName.length - 1]) // This is the way to access the last character of any string.
         // console.log(gamename.__proto__) // show us the string method object in node js empty object but in console it will show us all the methods inside the object that will be available for that string object like .toUpperCase() etc..
 
         // All String Methods:
