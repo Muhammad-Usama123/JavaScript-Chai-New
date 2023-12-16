@@ -309,6 +309,484 @@
 
             // 'abc'.padEnd(10, '12345678') // it will return "abc1234567" // it will not write the 8 because targetLength reached.
 
+    // 17) string.localeCompare(): compares two strings that the alphabet or number in referenceString occurs before compareString or after alphabetically, numerically or whether a character is base character in some language etc etc. and according to this criteria it returns values in numbers like if referenceString alphabet occurs before compareString alphabet then it will return normally -1 or in some browsers it can return -2 or even -3 depends upon browser. and if the referenceString occurs after compareString it will return normally the value of 1 but in some browsers it may return 2 or 3 depends upon browser and if we compare same alphabets in referenceString and compareString it will return 0.
+    
+        // Syntax: 
+
+            // referenceString.localeCompare(compareString)
+            // referenceString.localeCompare(compareString, locales) // if we don't provide any locales in the argument then it will take browser's default language as locales.
+
+            // referenceString.localeCompare(compareString, locales, options) // options for locales like base etc.etc
+
+        // Examples Of referenceString.localeCompare(compareString):
+
+            // referenceStr occurs before compareStr // negative number in return value -1, -2 or in some browsers -3. Example below:
+
+                // 'a'.localeCompare('b') // it will return -1 or -2 or -3 depends upon browsers
+
+            // referenceStr occurs after compareStr // positive number in return value 1, 2 or in some browsers 3. Example below:
+
+                // 'b'.localeCompare('a') // it will return 1 or 2 or 3 depends upon browsers
+
+            // referenceStr equivalent compareStr // 0 in return value. Example below:
+
+                // 'a'.localeCompare('a') // it will return 0.
+
+            // Examples of referenceString.localeCompare(compareString, locales):
+
+                // ä.localeCompare('z', 'de') // it will return -1 or -2 or -3 depends upon browsers cause in German ('de'), ä sorts before z.
+
+                // ä.localeCompare('z', 'sv') // it will return 1 or 2 or 3 depends upon browsers cause in Swedish ('sv'), ä sorts after z.
+
+            // Examples Of referenceString.localeCompare(compareString, locales, options):
+
+                // ä.localeCompare('a', 'de') 
+                // ä.localeCompare('a', 'sv') // they both line 343 and 344 will return a positive value like 1, 2 or 3 depends upon browser, it is because in both of these languages (Swedish and German) ä sorts after a.
+
+                // ä.localeCompare('a', 'de', {sensitivity: 'base'}) // returns 0 cause ä has a as the base letter in German.
+
+                // ä.localeCompare('a', 'sv', {sensitivity: 'base'}) // returns positive number 1 or 2 or 3 depends upon browser cause ä and a are separate base letters in Swedish.
+
+    // 18) and 19) // case sensitive by default but remove this condition by adding (/gi) with our regexp
+     // Difference between string.search() method and string.match() method is string.search() only returns the index number but string.match() returns an array with some properties inside it in which it also provides the index number but with some more details inside the array. 2nd difference is when it doesn't find any occurences of given regexp then string.search() returns -1 but string.match() returns null. 
+
+    // 18) string.search(): // case sensitive by default but remove this condition by adding (/gi) with our regexp.
+    //Difference between string.search() method and string.match() method is string.search() only returns the index number but string.match() returns an array with some properties inside it in which it also provides the index number but with some more details inside the array. 2nd difference is when it doesn't find any occurences of given regexp then string.search() returns -1 but string.match() returns null.
+
+        // Syntax: 
+
+            // string.search(regexp)
+
+        // Examples:
+
+            // let text = "The rain in SPAIN stays mainly in the plain";
+
+            // text.search('ain') // it will return 5 cause 1st appearance of ain starts at 5th index.
+            // text.search(/ain/) // it will return 5 cause 1st appearance of ain starts at 5th index and cause '/ain/' is getting treated as regexp.
+
+            // text.search(/AIN/) // it will return 14 cause 1st appearance of AIN starts at 14th index and cause this method is acting as case sensitive here cause we didn't provide /i in bracket with /AIN/ like this '/AIN/i' like in example below.
+
+            // text.search(/AIN/i) // it will return 5 cause 1st appearance of ain starts at 5th index and because of /i this method is not working as case sensitive here.
+
+            // text.search(/w/) // it will return -1 cause w doesn't exist in the whole main string.
+
+    // 19) and 20): Difference between string.match and string.matchAll(): // case sensitive by default but remove this condition by adding (/gi) with our regexp
+        
+        // in string.match() parameter bracket when we will give string('ain') or regexp (/ain/) string.match() will convert that string or regexp into just regexp if it is not one but in string.matchAll() it will convert string or normal regexp into global regexp (/ain/g) and the 2nd difference is that string.match() returns the array of only 1 match of the given regexp inside parameter bracket but string.matchAll() returns an array of arrays inside it with all the matches with their details in separate arrays and 3rd difference is when the string.match() doesn't find any match it returns null but string.matchAll returns an empty string.
+
+    // 19) string.match(): // case sensitive by default but remove this condition by adding (/gi) with our regexp
+     //Difference between string.search() method and string.match() method is string.search() only returns the index number but string.match() returns an array with some properties inside it in which it also provides the index number but with some more details inside the array. 2nd difference is when it doesn't find any occurences of given regexp then string.search() returns -1 but string.match() returns null.
+
+    // Difference between string.match and string.matchAll(): 
+        
+        // in string.match() parameter bracket when we will give string('ain') or regexp (/ain/) string.match() will convert that string or regexp into just regexp if it is not one but in string.matchAll() it will convert string or normal regexp into global regexp (/ain/g) and the 2nd difference is that string.match() returns the array of only 1 match of the given regexp inside parameter bracket but string.matchAll() returns an array of arrays inside it with all the matches with their details in separate arrays and 3rd difference is when the string.match() doesn't find any match it returns null but string.matchAll returns an empty string.
+
+        // Syntax: 
+
+            // string.match(regexp)
+
+        // Examples:
+
+            // let text = "The rain in SPAIN stays mainly in the plain";
+
+            // let res = text.match('ain') // returns an array [
+                // 'ain',
+                // index: 5,
+                // input: "The rain in SPAIN stays mainly in the plain"
+                // groups: undefined  
+            // ]
+
+            // let res = text.match(/ain/) // returns an array [
+                // 'ain',
+                // index: 5,
+                // input: "The rain in SPAIN stays mainly in the plain"
+                // groups: undefined  
+            // ] and cause it is treated as regexp both the slashes are acting as string opening and string closing.
+
+            // let res = text.match(/ain/g) // returns an array ['ain', 'ain', 'ain'] // gives us all the occurences of given regexp in the bracket cause of '/g' but acting as case sensitive here but in below example it is not acting like case sensitive cause of '/gi'.
+
+            // let res = text.match(/ain/gi) // returns an array ['ain', 'AIN', 'ain', 'ain'] // gives us all the occurences irrespective of the case of given regexp in the bracket cause of '/gi'.
+
+            // let res = text.match(/w/) // it will return null
+
+    // 20) string.matchAll(regexp): // case sensitive by default but remove this condition by adding (/gi) with our regexp. We can iterate through its values using for of loop and spread the arrays by using spread operator [...res].
+
+        // Difference between string.match and string.matchAll(): 
+        
+        // in string.match() parameter bracket when we will give string('ain') or regexp (/ain/) string.match() will convert that string or regexp into just regexp if it is not one but in string.matchAll() it will convert string or normal regexp into global regexp (/ain/g) and the 2nd difference is that string.match() returns the array of only 1 match of the given regexp inside parameter bracket but string.matchAll() returns an array of arrays inside it with all the matches with their details in separate arrays and 3rd difference is when the string.match() doesn't find any match it returns null but string.matchAll returns an empty string.
+
+        // Syntax: 
+
+            // string.matchAll(regexp)
+
+        // Examples:
+
+            // 1) // let text = "The rain in SPAIN stays mainly in the plain";
+
+            // let res = text.match('ain') // returns an array of arrays with all the matches with their details in separate arrays[
+                // [
+                // 'ain',
+                // index: 5,
+                // input: "The rain in SPAIN stays mainly in the plain"
+                // groups: undefined  
+                // ],
+
+                // [
+                // 'ain',
+                // index: 25,
+                // input: "The rain in SPAIN stays mainly in the plain"
+                // groups: undefined  
+                // ],
+
+                // [
+                // 'ain',
+                // index: 40,
+                // input: "The rain in SPAIN stays mainly in the plain"
+                // groups: undefined  
+                // ]
+            // ] // res variable is an iterator we can loop through res using for of loop and can spread its values using spread operator like "[...res]"
+
+            // 2) // let res = text.match(/ain/gi) // returns an array of arrays with all the matches with their details in separate arrays and because we mentioned '/gi' it will not act as case sensitive[
+                // [
+                // 'ain',
+                // index: 5,
+                // input: "The rain in SPAIN stays mainly in the plain"
+                // groups: undefined  
+                // ],
+
+                // [
+                // 'AIN',
+                // index: 14,
+                // input: "The rain in SPAIN stays mainly in the plain"
+                // groups: undefined  
+                // ],
+
+                // [
+                // 'ain',
+                // index: 25,
+                // input: "The rain in SPAIN stays mainly in the plain"
+                // groups: undefined  
+                // ],
+
+                // [
+                // 'ain',
+                // index: 40,
+                // input: "The rain in SPAIN stays mainly in the plain"
+                // groups: undefined  
+                // ]
+            // ] // res variable is an iterator we can loop through res using for of loop and can spread its values using spread operator like "[...res]"
+
+            // 3) // let res = text.match(/w/gi) // returns an empty array [] cause no occurences found of the given regexp inside method bracket.
+
+            // 4) // let res = text.match(/ain/) // returns "Uncaught TypeError: matchAll must be called with a global regexp ("/g")"
+
+    // 21) And 22) Difference between string.replace() and string.replaceAll():
+
+        // string.replace() only replaces the 1st match if we don't write "/g" with our regexp but string.replaceAll() replaces all the matches.
+
+    // 21) string.replace(): replaces the searchString with replacerString in main string but does not change the original string but returns a new string with the replaced substring that we passed as a replacerString. Case sensitive. Replace will replace only the 1st matchif we don't give it regExp with /g. Difference between string.replace() and string.replaceAll():
+
+        // string.replace() only replaces the 1st match if we don't write "/g" with our regexp but string.replaceAll() replaces all the matches.
+
+        // Syntax:
+
+            // string.replace(searchString, replacerString)
+            // string.replace(searchString, replacerFunction)
+            // string.replace(regExp, replacerString)
+            // string.replace(regExp, replacerFunction)
+
+        // Examples Of string.replace(searchString, replacerString):
+
+            // let text = 'Mr Blue has a blue house and a blue car'
+
+            // let result = text.replace('blue', 'red') // returns a new string 'Mr Blue has a red house and a blue car' // case sensitive
+
+        // Examples Of string.replace(searchString, replacerFunction):
+
+            // let result = text.replace('blue', (match) => {
+                // return match.toUpperCase();
+            // }); // returns a new string 'Mr Blue has a BLUE house and a blue car' // case sensitive
+
+        // Examples Of string.replace(regExp, replacerString):
+
+            // let result = text.replace(/blue/g, 'red') // returns a new string 'Mr Blue has a red house and a red car' // replaced both the matches cause we gave it "/g" in our regExp. //case sensitive
+
+            // let result = text.replace(/blue/gi, 'red') // returns a new string 'Mr red has a red house and a red car' // replaced all the matches irrespective of the case sensitivity cause we gave it "/gi" in our regExp. //doesn't act as a case sensitive here cause we gave it "/gi" in our regExp.
+
+        // Examples Of string.replace(regExp, replacerFunction):
+
+            // let result = text.replace(/blue/gi, (match) => { // we can also pass other parameters in this function read documentation for the other parameters.
+                // match.toUpperCase
+            // } // returns a new string 'Mr BLUE has a BLUE house and a BLUE car' // replaced all the matches irrespective of the case sensitivity cause we gave it "/gi" in our regExp. //doesn't act as a case sensitive here cause we gave it "/gi" in our regExp.
+
+    // 22) string.replaceAll():
+
+        // Difference between string.replace() and string.replaceAll():
+
+        // string.replace() only replaces the 1st match if we don't write "/g" with our regexp but string.replaceAll() replaces all the matches.
+
+        // Syntax:
+
+            // string.replaceAll(searchString, replacerString)
+            // string.replaceAll(searchString, replacerFunction)
+            // string.replaceAll(regExp, replacerString)
+            // string.replaceAll(regExp, replacerFunction)
+
+        // Examples Of string.replaceAll(searchString, replacerString):
+
+            // let text = 'Mr Blue has a blue house and a blue car'
+
+            // let result = string.replaceAll('blue', 'red') // returns a new string 'Mr Blue has a red house and a red car'
+
+        // Examples Of string.replaceAll(searchString, replacerFunction):
+
+            // let result = string.replaceAll('blue', (match) => {
+                // return match.toUpperCase()
+            // }) // returns a new string 'Mr Blue has a BLUE house and a BLUE car'
+
+        // Examples Of string.replaceAll(regExp, replacerString):
+
+            // let result = string.replace(/blue/g, 'red') // returns a new string 'Mr Blue has a red house and a red car' // regExp must be called with "/g" in string.replaceAll() method.
+            
+            // let result = string.replace(/blue/gi, 'red') // returns a new string with replacing all the matches irrespective of the case sensitivity cause of "/gi" 'Mr red has a red house and a red car' // regExp must be called with "/g" in string.replaceAll() method.
+            
+            // let result = string.replace(/blue/, 'red') // returns an Error "TypeError: replaceAll must be called with a global regExp"// regExp must be called with "/g" in string.replaceAll() method.
+
+        // Examples Of string.replaceAll(regExp, replacerFunction):
+
+            // let result = string.replaceAll(/blue/gi, (match) => { // we can give more than 1 parameters to this function see documentaion for this
+                // return match.toUpperCase();
+            // }) // returns a new string replaces all the matches irrespective of case sensitivity cause of "/gi" 'Mr BLUE has a BLUE house and a BLUE car'
+
+    // 23) And 24) string.charCodeAt() And string.codePointAt(): 
+
+        // Difference between these two is that string.charCodeAt() is UTF-16 and string.codePointAt() is Unicode. // They both take position of a character in the main string and they both return a UTF-16 bit code of that character but string.charCodeAt() can only return the code for those characters that has a code between 0 and 65535 but the string.codePointAt() it can go and return the same code for those characters that are in between 0 and 65535 but can also return the code for those that has a code that is greater than 65535. If you're working with characters that doesn't have emojis then we can simply go with string.charCodeAt().
+
+    // 23) string.charCodeAt():
+
+        // Difference between these two is that string.charCodeAt() is UTF-16 and string.codePointAt() is Unicode. // They both take position of a character in the main string and they both return a UTF-16 bit code of that character but string.charCodeAt() can only return the code for those characters that has a code between 0 and 65535 but the string.codePointAt() it can go and return the same code for those characters that are in between 0 and 65535 but can also return the code for those that has a code that is greater than 65535. If you're working with characters that doesn't have emojis then we can simply go with string.charCodeAt().
+
+        // Syntax:
+
+            // string.charCodeAt(position)
+
+        // Examples:
+
+            // const str = 'Ok 👍' // str.length will show this string's length 5 cause 👍 emoji is taking 2 characters space in the string.
+
+            // str.charCodeAt(0) // it will return 79. // same as string.codePointAt() below
+            // str.charCodeAt(1) // it will return 107. // same as string.codePointAt() below
+            // str.charCodeAt(2) // it will return 32. // same as string.codePointAt() below
+            // str.charCodeAt(3) // it will return 55357. // it's gonna see this as single 16-bit code unit // Different from string.codePointAt() here cause of emoji. If I use this code that we get in return from emoji starting index to get a character or an emoji, the emoji I'm gonna get is question mark emoji which shows a broken character.
+            // str.charCodeAt(4) // it will return 56397. // same as string.codePointAt() below
+            // str.charCodeAt(5) // it will return NaN. // another difference from string.codePointAt() below. // this index is not present in our main string.
+            // str.charCodeAt() // it will return 79 cause it will take empty bracket as 0 index by default. // same as string.codePointAt() below
+
+    // 24) string.codePointAt():
+
+    // Difference between these two is that string.charCodeAt() is UTF-16 and string.codePointAt() is Unicode. // They both take position of a character in the main string and they both return a UTF-16 bit code of that character but string.charCodeAt() can only return the code for those characters that has a code between 0 and 65535 but the string.codePointAt() it can go and return the same code for those characters that are in between 0 and 65535 but can also return the code for those that has a code that is greater than 65535. If you're working with characters that doesn't have emojis then we can simply go with string.charCodeAt().
+
+        // Syntax:
+
+            // string.codePointAt(position)
+
+        // Examples:
+
+            // const str = 'Ok 👍' // str.length will show this string's length 5 cause 👍 emoji is taking 2 characters space in the string.
+
+            // str.codePointAt(0) // it will return 79. // same as string.charCodeAt() above
+            // str.codePointAt(1) // it will return 107. // same as string.charCodeAt() above
+            // str.codePointAt(2) // it will return 32. // same as string.charCodeAt() above
+            // str.codePointAt(3) // it will return 128077. // it's not gonna see this as a single 16-bit code unit instead it's gonna see it as 2 16-bit code units. // Different from string.charCodeAt() here cause of emoji // now if I use this code that we get in return from emoji starting index to get an emoji, the emoji I'm gonna get is this thumbs up emoji that is written in our main string after "Ok "
+            // str.codePointAt(4) // it will return 56397. // same as string.charCodeAt() above
+            // str.codePointAt(5) // it will return undefined. // another difference from string.charCodeAt() above. // this index is not present in our main string.
+            // str.codePointAt() // it will return 79 cause it will take empty bracket as 0 index by default. // same as string.charCodeAt() above.
+
+    // 25) And 26) string.fromCharCode() And string.fromCodePoint(): opposite of string.charCodeAt() and string.codePointAt():
+
+    // 25) String.fromCharCode(): // String here is string constructor object. We will create string from code.
+
+        // Syntax:
+
+            // String.fromCharCode(code1)
+            // String.fromCharCode(code1, code2, ..., codeN)
+
+        // Examples String.fromCharCode(code1): 
+
+            // String.fromCharCode(79) // it will return O. Same as fromCodePoint() below
+            // String.fromCharCode(107) // it will return k. Same as fromCodePoint() below
+            // String.fromCharCode(32) // it will return whitespace. Same as fromCodePoint() below
+            // String.fromCharCode(55357) // it will return a broken character (question mark emoji). Same as fromCodePoint() below
+
+            // String.fromCharCode(56397) // it will return a broken character (question mark emoji). Same as fromCodePoint() below
+
+            // String.fromCharCode(128077) // it will return a broken character (question mark emoji but different than above emoji). // Different then fromCodePoint() below cause it works on single utf 16 bit unit and this is the main difference between fromCharCode() and fromCodePoint().
+
+        // Examples of String.fromCharCode(code1, code2, ..., codeN):
+
+            // String.fromCharCode(79, 107, 32, 55357, 56397) // it will return a string "Ok 👍"
+
+    // 25) String.fromCodePoint(): // String here is string constructor object. We will create string from code.
+
+        // Syntax:
+
+            // String.fromCodePoint(code1)
+            // String.fromCodePoint(code1, code2, ..., codeN)
+
+        // Examples of String.fromCodePoint(code1):
+
+            // String.fromCodePoint(79) // it will return O. Same as fromCharCode() above
+            // String.fromCodePoint(107) // it will return k. Same as fromCharCode() above
+            // String.fromCodePoint(32) // it will return whitespace. Same as fromCharCode() above
+            // String.fromCodePoint(55357) // it will return a broken character (question mark emoji). Same as fromCharCode() above
+
+            // String.fromCodePoint(56397) // it will return a broken character (question mark emoji). Same as fromCharCode() above
+
+            // String.fromCodePoint(128077) // it will return a thumbs up emoji.// Different then fromCharCode() above cause it works on more then single utf 16 bit unit and this is the main difference between fromCharCode() and fromCodePoint().
+
+        // Examples of String.fromCodePoint(code1, code2, ..., codeN):
+
+            // String.fromCodePoint(79, 107, 32, 55357, 56397) // it will return a string "Ok 👍"
+
+            // String.fromCodePoint(79, 107, 32, 128077, 56397) // it will return a string "Ok 👍(question mark emoji for representing a broken character)"
+
+    // 26) string.normalize(): // doesn't change the original string. It will return a new string after running the normalize() method. // Why do we need this method? Unicode assigns a single code point for each character, for example 'A' it's code point is 'U+0041' but sometimes it assigns more than 1 code point for a single character, for example this character "Ç" (C with cedilla), this character's unicode is "U+00C7" which is it's single code point but then we can also use the code for "C" (U+0043) and the code for "¸" (cedilla)(U+0327) combined we're gonna get this same "Ç", so, in JavaScript when we assign these two types of code for "Ç" to 2 different strings and compare those strings it will return false like below example: 
+
+        // Example:
+
+            // const string1 = '\u00C7' // it will return 'Ç' same as string2 below
+
+            // const string2 = '\u0043\0327' // it will also return 'Ç' same as string1 above.
+
+            // string1 === string2 // it will return false because of different codes.
+
+            // string1.length // it will return 1
+            // string2.length // it will return 2
+
+            // string1.length === string2.length // it will also return false
+
+            // Note: The above two strings will look the same to end user but not to app. So this is where the problem occurs. So that's why we need to use normalize().
+
+        // Syntax:
+
+            // string.normalize()
+            // string.normalize(form) // Unicode Normalization Form: "NFC", "NFD", "NFKC" or "NFKD" by default form will use "NFC" (NFC stands for Canonical Decomposition Followed By Canonical Composition) // "NFD" (NFD stands for Canonical Decomposition)
+
+        // Examples:
+
+            // const string1 = '\u00C7' // it will return 'Ç' same as string2 below
+
+            // const string2 = '\u0043\0327' // it will also return 'Ç' same as string1 above.
+
+            // string1.codePointAt(0) // it will return 199
+
+            // string2.codePointAt(0) // it will return 67
+            // string2.codePointAt(1) // it will return 807
+
+            //Example With "NFC" Form: //because we didn't write any form name in below example in the parameter it got set to "NFC" by default below.
+
+                // string1.normalize() 
+                // string1.length // it will return 1 
+                // string1.codePointAt(0) // it will return 199
+
+                // string2.normalize() 
+                // string2.length // it will return 1 
+                // string2.codePointAt(0) // it will return 199 // so after running normalize() on both string1 and string2 they become a same single unicode character. String 1 was already a single coded actually string2 got changed from this method // because we didn't write any form name in the parameter it got set to "NFC" by default.
+
+            //Example With "NFD" Form: 
+
+                // string1.normalize("NFD") 
+                // string1.length // it will return 2 
+                // string1.codePointAt(0) // it will return 67
+                // string1.codePointAt(1) // it will return 807
+                
+                // string2.normalize("NFD") 
+                // string2.length // it will return 2 
+                // string2.codePointAt(0) // it will return 67
+                // string2.codePointAt(1) // it will return 807 // so after running normalize() on both string1 and string2 they become a same 2 code unicode character. String 2 was already 2 code unicode actually string1 got changed from this method.
+
+    // 28) And 29) string.toLowerCase() And string.toUpperCase(): // doesn't change the original string. Returns a new string.
+
+        // 28) string.toLowerCase(): // doesn't change the original string. Returns a new string
+
+            //Syntax:
+
+                // string.toLowerCase()
+
+            // Example: 
+
+                // const abc = 'Abc def'
+
+                // const strLower = abc.toLowerCase() // it will return a new string "abc def"
+
+        // 28) string.toUpperCase(): // doesn't change the original string. Returns a new string
+
+            //Syntax:
+
+                // string.toUpperCase()
+
+            // Example: 
+
+                // const abc = 'abc def'
+
+                // const strUpper = abc.toUpperCase() // it will return a new string "ABC DEF"
+
+    // 29) And 30) string.toLocaleUpperCase() And string.toLocaleLowerCase(): doesn't change the original string. Returns a new string
+
+    // 29)  string.toLocaleUpperCase(): doesn't change the original string. Returns a new string
+
+        // Syntax:
+
+            // string.toLocaleUpperCase()
+            // string.toLocaleUpperCase(locale or array of locales)
+
+        // Example:
+
+            // const lower = 'istanbul'
+
+            // English US:
+
+                // const upper = lower.toLocaleUpperCase('en-US') // it will return a new string "ISTANBUL"
+                
+            // Turkish:
+                
+                // const upper = lower.toLocaleUpperCase('tr') // it will return a new string "İSTANBUL"
+
+    // 30) string.toLocaleLowerCase(): doesn't change the original string. Returns a new string
+
+        // Syntax:
+
+            // string.toLocaleLowerCase()
+            // string.toLocaleLowerCase(locale or array of locales)
+
+        // Example:
+
+            // const upper = 'İSTANBUL'
+
+            // English US:
+
+                // const upper = upper.toLocaleLowerCase('en-US') // it will return a new string "istanbul"
+                
+            // Turkish:
+                
+                // const upper = upper.toLocaleLowerCase('tr') // it will return a new string "istanbul"
+
+    
+
+
+            
+
+        
+    
+
+        
+
+
+                
+            
+
+
+
 
         
 
