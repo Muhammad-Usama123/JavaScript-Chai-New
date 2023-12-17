@@ -771,6 +771,72 @@
                 
                 // const upper = upper.toLocaleLowerCase('tr') // it will return a new string "istanbul"
 
+    // 31) And 32) string.toString And string.valueOf: // These 2 methods are basically the same methods. So you want to call them on your string object and they both are going to return the same result which is the primitive value of that string object. They are both the string own methods means string doesn't inherit these methods from the string object. We won't have to explicitly call these methods, JavaScript itself will do it internally.
+
+    // 31) string.toString():
+
+        // string.toString And string.valueOf: // These 2 methods are basically the same methods. So you want to call them on your string object and they both are going to return the same result which is the primitive value of that string object. They are both the string own methods means string doesn't inherit these methods from the string object. We won't have to explicitly call these methods, JavaScript itself will do it internally.
+
+        // Syntax:
+
+            // string.toString()
+            // String.prototype.toString() // correct 
+            // Object.prototype.toString() // wrong
+
+        // Example:
+
+        // const stringObject = new String('abc def') // string object
+
+            // console.log(stringObject) // it will return String{'abc def'} (string object)
+
+            // stringObject.toString() // it will turn the string object into primitive string value which will be 'abcdef'. So for the string object string.toString() and string.valueOf() are basically the same methods. We won't have to explicitly call these methods, JavaScript itself will do it internally.
+
+    // 32) string.valueOf():
+
+        // string.toString And string.valueOf: // These 2 methods are basically the same methods. So you want to call them on your string object and they both are going to return the same result which is the primitive value of that string object. They are both the string own methods means string doesn't inherit these methods from the string object. We won't have to explicitly call these methods, JavaScript itself will do it internally.
+
+        // Syntax:
+
+            // string.valueOf()
+            // String.prototype.valueOf() // correct 
+            // Object.prototype.valueOf() // wrong
+
+        // Example:
+
+            // const stringObject = new String('abc def') // string object
+
+            // console.log(stringObject) // it will return String{'abc def'} (string object)
+
+            // stringObject.valueOf() // it will turn the string object into primitive string value which will be 'abcdef'. So for the string object string.toString() and string.valueOf() are basically the same methods. We won't have to explicitly call these methods, JavaScript itself will do it internally.
+
+    // 33) String.raw():
+
+        // Escape characters like \n, \r and \t etc. etc. will not be processed using this String.raw() method but Interpolations (${ /* JavaScript code */ }) will be processed.
+
+        // Syntax:
+
+            // String.raw(strings, ...substitutions) // but we will not use it like this we'll use it like the below backtick syntax.
+
+            // String.raw`templateString`
+
+        // Examples:
+
+            // const str1 = String.raw`He is \n${10 + 5} years old!` // it will return "He is \\n15 years old!"
+
+            // const str2 = String.raw`He is \u000A${10 + 5} years old!` // it will return "He is \\u000A15 years old!"
+
+            // const name = 'Code Explained!'
+
+            // const str3 = String.raw`Hi\n${name}!` // it will return "Hi \\nCode Explained!"
+
+            // const str4 = String.raw`Hi\${name}!` // it will return "Hi \\${name}!"
+
+            // const str5 = String.raw`C:\windows\registration\name\filename.js` // it will return "C:\\windows\\registration\\name\\filename.js"
+
+            // video ended
+
+        
+
     
 
 
