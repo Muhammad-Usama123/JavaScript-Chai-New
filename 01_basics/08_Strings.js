@@ -15,6 +15,30 @@
         // console.log(gameName[gameName.length - 1]) // This is the way to access the last character of any string.
         // console.log(gamename.__proto__) // show us the string method object in node js empty object but in console it will show us all the methods inside the object that will be available for that string object like .toUpperCase() etc..
 
+        // console.log(gameName.length) // it will return 10
+        // console.log(gameName.toUpperCase) // it will return 'HARIS KHAN'
+        // console.log(gameName.charAt(2)) // it will return r
+        // console.log(gameName.indexOf('r')) // it will return 2
+
+        // const gameName1 = new String('Haris-Khan-abc')
+
+        // const newString = gameName1.subString(0, 5) // it will return 'Haris'
+
+        // const anotherString = gameName1.slice(0, 5) // it will return 'Haris' but the difference between substring and slice method is we can give slice method negative values so it will work in reverse position.
+
+        // const anotherString1 = gameName1.slice(-8, 4) // it will return 'ri'. // the difference between substring and slice method is we can give slice method negative values so it will work in reverse position.
+
+        // const newStringOne = "    Haris    "
+
+        //console.log(newStringOne.trim()) // it will return a new string "Haris" with all the spaces removed.
+
+        // const url = "https://abc.com/abc%20def"
+
+        // console.log(url.replace('%20', '-')) // it will return "https://abc.com/abc-def"
+        // console.log(url.includes('abc')) // it will return true.
+
+        // console.log(gameName1.split('-')) // it will return an array ['Haris', 'Khan', 'abc'] values seperated by '-'.
+
         // All String Methods:
 
             // 1) .at(index) // it will give us the character at the given index we can give this method both negative and positive index. Positive index starts from 0 and negative index starts from -1. Negative index will start counting from the end of sentence.
